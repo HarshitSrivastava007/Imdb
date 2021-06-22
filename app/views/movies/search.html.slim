@@ -1,0 +1,28 @@
+div
+h2 Movies List
+table.table
+  thead
+    tr
+      th scope="col"  Image
+      th scope="col"  Name
+      th scope="col"  Edit Movie
+      th scope="col"  Delete Movie
+      th scope="col"  Details
+    tbody
+      -@movies.each do |f|
+        tr
+          -if f.image.attached?
+            td = image_tag f.image
+          -else
+            td = 0
+          td = f.name
+          td = link_to "Edit", edit_movie_path(f), class: "btn btn-danger"
+          td = link_to "Delete", f, method: :delete, class: "btn btn-danger"
+          td = link_to "Details", movie_path(f), class: "btn btn-danger"
+
+
+
+
+table.table
+ th = link_to "add new", new_movie_path, class: "btn btn-primary" 
+ th = link_to "Top Movies", top_path, class: "btn btn-primary"

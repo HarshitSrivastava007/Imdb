@@ -1,0 +1,9 @@
+h3 ADD Review
+= form_for model: [ @movie, @movie.rating.build ] do |f|
+  p
+    f.label :commenter
+    f.text_field:comment
+  p
+    f.label :rating
+    f.text_field:rating
+

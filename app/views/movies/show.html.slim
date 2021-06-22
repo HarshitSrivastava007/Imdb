@@ -1,0 +1,62 @@
+br
+h2 Movie Details
+div
+-if @movie.image.attached?
+  td = image_tag @movie.image
+-else
+  td = 0
+table.table
+  thead
+    tr
+      th scope="col"  Name
+      th scope="col"  Category
+      th scope="col"  Discription
+      th scope="col"  Release_date
+      th scope="col"  Rating
+  tbody
+        tr
+          td = @movie.name
+          td = @movie.category
+          td = @movie.discription
+          td = @movie.release_date
+          td = @movie.rating
+
+br
+div
+h2 Movie Reviews
+table.table
+  thead
+    tr
+      th scope="col"  User
+      th scope="col"  Comments
+      th scope="col"  Rating
+    tbody
+      -@movie.reviews.each do |review|
+        tr
+          td = review.user_id
+          td = review.comment
+          td = review.rating
+br
+div
+h2 Add a comment:
+= form_for @review, url: movie_reviews_path(@movie) do |f|
+  div 
+  = f.label :user_id, class: "form-label"
+  = f.text_field :user_id, class: "form-control"
+  div 
+  = f.label :movie_id, class: "form-label"
+  = f.text_field :movie_id, class: "form-control"
+  div
+  = f.label :rating, class: "form-label"
+  = f.text_area :rating, class: "form-control"
+  div
+  = f.label :comment, class: "form-label"
+  = f.text_area :comment, class: "form-control"
+  div
+  br
+  = f.button :submit, class:"btn btn-primary"
+  
+
+
+
+

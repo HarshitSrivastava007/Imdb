@@ -1,0 +1,17 @@
+h3 Top List
+table.table
+  thead
+    tr
+      th scope="col"  Image
+      th scope="col"  Name
+      th scope="col"  Rating
+  tbody
+      - @movies.each do | f |
+        tr
+          -if f.image.attached?
+            td = image_tag f.image, style:"border-radius: 50px;"
+          -else
+            td = 0
+          td = f.name
+          td = f.rating
+    
